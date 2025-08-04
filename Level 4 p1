@@ -1,0 +1,112 @@
+import turtle
+import random
+import time
+
+h_point = 0
+comp_point = 0
+
+s = turtle.Screen()
+s.setup(700,600)
+s.bgcolor("blue")
+s.title ("Rock Paper Scissors")
+
+s.addshape("rock.gif")
+s.addshape("scissor.gif")
+s.addshape("paper.gif")
+
+#paper
+p = turtle.Turtle()
+p.penup()
+p.goto(250,150)
+p.shape("paper.gif")
+
+#rock
+r = turtle.Turtle()
+r.penup()
+r.goto(250,0)
+r.shape("rock.gif")
+
+#scissor
+sc = turtle.Turtle()
+sc.penup()
+sc.goto(250,-150)
+sc.shape("scissor.gif")
+
+
+
+#human
+p1 = turtle.Turtle()
+p1.ht()
+p1.penup()
+p1.goto(-250,250)
+p1.write("Computer",font = ("verdana",20,"bold"))
+p1.goto(200,250)
+p1.write("Human",font = ("verdana",20,"bold"))
+
+#score
+
+p2 = turtle.Turtle()
+p2.ht()
+p2.penup()
+p2.goto(-275,-250)
+p2.write("Computer Score: ",comp_point ,font = ("verdana",20,"bold"))
+
+p3= turtle.Turtle()
+p3.ht()
+p3.penup()
+p3.goto(150,-250)
+p3.write("Human Score: ",h_point ,font = ("verdana",20,"bold"))
+
+
+#draw
+
+comp = turtle.Turtle()
+comp.ht()
+comp.penup()
+comp.goto(-250,0)
+
+#code
+
+h_score = 0
+c_score = 0
+
+def choice(x,y):
+    global h_score,c_score
+    if x >=r.xcor()-50 and x<r.xcor()+50 and y>= r.ycor()-50 and y < r.ycor()+50:
+        human_choice = "rock"
+    elif x >=p.xcor()-50 and x<p.xcor()+50 and y>= p.ycor()-50 and y < p.ycor()+50:
+        human_choice = "paper"
+    elif x >=sc.xcor()-50 and x<sc.xcor()+50 and y>= sc.ycor()-50 and y < sc.ycor()+50:
+        human_choice = "scissor"
+
+    shape = ["rock.gif","paper.gif","scissor.gif"]
+    for i in range (10):
+        t=random.choice(shape)
+        comp.shape(t)
+        comp.st()
+        time.sleep(0.01)
+        comp.ht()
+
+    comp.st()
+    if t == "rock.gif":
+        comp_choice = "rock"
+    elif t == "paper.gif":
+        comp_choice = "paper"
+    elif t == "rock.gif":
+        comp_choice = "scissor"
+
+
+s.listen()
+
+s.onscreenclick(choice,1)
+
+human_choice = s.onscreenclick()
+if human_choice == "rock" and comp_choice == "scissor":
+    h_point += 1
+elif human_choice == "rock" and comp_choice == "rock":
+    h_point += 0
+elif human_choice == "rock" and comp_choice == "paper":
+    comp_point += 1
+
+
+turtle.done()
