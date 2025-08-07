@@ -1,0 +1,94 @@
+import turtle
+import time
+import random
+
+score = 0
+shot = 0
+
+s = turtle.Screen()
+s.setup(700,500)
+s.bgcolor("orange")
+
+s.tracer(0)
+
+s.title("Basketball Game")
+s.addshape("hoop.gif")
+
+basket = turtle.Turtle()
+basket.shapesize(1)
+basket.penup()
+basket.goto(0,200)
+basket.shape("hoop.gif")
+
+ball= turtle.Turtle()
+ball.penup()
+ball.goto(0,-180)
+ball.shape("circle")
+ball.color("red")
+ball.shapesize(2)
+
+pscore = turtle.Turtle()
+pscore.penup()
+pscore.goto(-320,-200)
+pscore.write("score = 0", font=("verdana",15,"bold"))
+pscore.ht()
+
+pshot = turtle.Turtle()
+pshot.penup()
+pshot.goto(-320,-215)
+pshot.write("Numer of Shots = 0", font=("verdana",15,"bold"))
+pshot.ht()
+
+paccuracy = turtle.Turtle()
+paccuracy.penup()
+paccuracy.goto(-320,-230)
+paccuracy.write("Accuracy = 0 %", font=("verdana",15,"bold"))
+paccuracy.ht()
+
+def shoot():
+    for i in range(30):
+        y = ball.ycor()
+        y += 15
+        ball.sety(y)
+        time.sleep(0.02)
+        s.update()
+        if (ball.xcor()<basket.xcor()+ 50) and (ball.xcor()>basket.xcor()- 50) and ball.ycor() == basket.ycor():
+
+            global score
+            score += 1
+            ball.sety(120)
+            s.update()
+            time.sleep(0.02)
+            ball.sety(80)
+            s.update()
+            pscore.clear()
+            pscore.write("score : {}".format(score), font=("verdana",15,"bold"))
+            break
+
+    global shot
+    ball.goto(0,-180)
+    shot += 1
+    pshot.clear()
+    pshot.write("shot : {}".format(shot), font=("verdana",15,"bold"))
+
+    
+
+s.listen()
+s.onkeypress(shoot,"Up")
+
+
+while True:
+    s.update()
+    x=random.randint(20,100)
+    basket.setx(basket.xcor()+x)
+    time.sleep(0.05)
+    x=random.randint(30,100)
+    basket.setx(basket.xcor()-x)
+    time.sleep(0.05)
+    if basket.xcor()>250 :
+        basket.setx(220)
+    if basket.xcor()<-250:
+        basket.setx(-220)
+
+turtle.done()
+s.mainloop()
