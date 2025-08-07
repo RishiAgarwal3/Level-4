@@ -1,3 +1,6 @@
+#you need to download the rock, paper and scissors images 
+
+
 import turtle
 import random
 import time
