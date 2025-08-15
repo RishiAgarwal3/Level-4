@@ -1,0 +1,155 @@
+import turtle
+import time
+import random
+
+
+#screen
+s=turtle.Screen()
+s.setup(700,700)
+s.bgcolor("yellow")
+s.title("Memory Game")
+
+
+#circle
+c = turtle.Turtle()
+c.penup()
+c.ht()
+c.shape("circle")
+c.shapesize(3)
+
+#square
+sq = turtle.Turtle()
+sq.penup()
+sq.ht()
+sq.shape("square")
+sq.shapesize(3)
+
+#turtle
+
+p = turtle.Turtle()
+p.penup()
+p.ht()
+p.shape("turtle")
+p.shapesize(3)
+
+#arrow
+
+a = turtle.Turtle()
+a.penup()
+a.ht()
+a.shape("arrow")
+a.shapesize(3)
+
+#triangle
+
+tr = turtle.Turtle()
+tr.penup()
+tr.ht()
+tr.shape("triangle")
+tr.shapesize(3)
+
+t = turtle.Turtle()
+t.penup()
+t.ht()
+t.goto(-300,200)
+t.write("Watch Carefully", font = ("verdana",20,"bold"))
+time.sleep(3)
+t.clear()
+
+l = [c,sq,p,tr,a]
+answer = []
+
+def spin():
+    global answer
+    for x in range (5):
+        y = random.choice(l)
+        answer.append(y)
+        l.remove(y)
+
+        y.showturtle()
+        time.sleep(1.5)
+        y.ht()
+
+def write():
+    global answer,z
+    c.goto(-200,-100)
+    c.showturtle()
+
+    sq.goto(-100,-100)
+    sq.showturtle()
+
+    a.goto(0,-100)
+    a.showturtle()
+
+    p.goto(100,-100)
+    p.showturtle()
+
+    tr.goto(200,-100)
+    tr.showturtle()
+
+    n=random.randint(1,5)
+
+
+    if n == 1:
+        t.write("Which was the First shape?" ,font=("verdana",20,"bold"))
+    if n == 2:
+        t.write("Which was the Second shape?" ,font=("verdana",20,"bold"))
+    if n == 3:
+        t.write("Which was the Third shape?" ,font=("verdana",20,"bold"))
+    if n == 4:
+        t.write("Which was the Fourth shape?" ,font=("verdana",20,"bold"))
+    if n == 5:
+        t.write("Which was the Fifth shape?" ,font=("verdana",20,"bold"))
+
+    z = answer[n-1]
+
+def check():
+    global guess,z
+
+    if guess == z:
+        t.clear()
+        t.write("Correct Answer, Good Job", font= ("verdana",20,"bold"))
+        time.sleep(2)
+        t.clear()
+    else:
+        t.clear()
+        t.write("Wrong Answer!, Better luck next time", font=("verdana",20,"bold"))
+        time.sleep(2.5)
+        t.clear()
+
+
+
+
+def click(x,y):
+    
+    global guess
+
+    if x<c.xcor()+30 and x>c.xcor()-30 and y>c.ycor()-30 and y<c.ycor()+30:
+        guess = c
+        check()
+    
+    if x<sq.xcor()+30 and x>sq.xcor()-30 and y>sq.ycor()-30 and y<sq.ycor()+30:
+        guess = sq
+        check()
+
+    if x<a.xcor()+30 and x>a.xcor()-30 and y>a.ycor()-30 and y<a.ycor()+30:
+        guess = a
+        check()
+
+    if x<p.xcor()+30 and x>p.xcor()-30 and y>p.ycor()-30 and y<p.ycor()+30:
+        guess = p
+        check()
+
+    if x<tr.xcor()+30 and x>tr.xcor()-30 and y>tr.ycor()-30 and y<tr.ycor()+30:
+        guess = tr
+        check()
+
+spin()
+write()
+s.listen()
+s.onscreenclick(click,1)
+
+
+turtle.done()
+s.mainloop()
+
