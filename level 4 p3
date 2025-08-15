@@ -1,0 +1,37 @@
+import tkinter as tk
+
+root = tk.Tk()
+
+root.title("First Tkinter")
+root.geometry("400x400")
+root.config(bg="lightblue")
+l1= tk.Label(root,text="Hello Tkinter")
+l1.config(fg="yellow",bg="black")
+l1.pack()
+def buttonclick():
+    l1.config(text="button clicked")
+button=tk.Button(root,text="click me",command=buttonclick)
+button.pack()
+
+e = tk.Entry(root)
+e.pack()
+def on_entry_submit():
+    userinput = e.get()
+    l1.config(text=f"you entered: {userinput}")
+
+submit_button = tk.Button(root,text="Click to submit",command=on_entry_submit)
+submit_button.pack()
+
+t= tk.Text(root,height=5,width=30)
+t.pack()
+
+content= t.get("1.0","end-1c")
+
+def on_text_click():
+    content= t.get("1.0","end-1c")
+    l1.config(text=f"text content = {content}")
+
+text_button = tk.Button(root,text = "click here to submit",command = on_text_click)
+text_button.pack()
+
+root.mainloop()
