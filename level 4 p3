@@ -1,3 +1,6 @@
+#tkinter has to be installed beofre used
+
+
 import tkinter as tk
 
 root = tk.Tk()
