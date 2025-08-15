@@ -1,3 +1,6 @@
+#Memoery game , arrow an turtle are different
+
+
 import turtle
 import time
 import random
