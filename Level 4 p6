@@ -1,0 +1,71 @@
+import tkinter as tk
+
+import random
+
+colors = ['red','yellow','green','blue','orange','white','cyan','pink','purple','magenta','black','brown']
+
+score = 0
+
+time_left = 30
+
+root = tk.Tk()
+
+root.title('Color Game')
+root.config(background="gray")
+
+root.geometry("400x400")
+
+instruction = tk.Label(root,text="Type in The color of the words and not the word itself",font=("verdana",12,"bold"))
+
+instruction.pack()
+scorelabel = tk.Label(root,text="press enter to start", font = ("verdana",12,"bold"))
+scorelabel.pack()
+
+time_label = tk.Label(root, text= "Time Left: "+ str(time_left),font=("times",12,'bold'))
+
+time_label.pack()
+
+label = tk.Label(root, font= ("times",12,'bold') )
+
+label.pack()
+
+e = tk.Entry(root)
+
+e.pack()
+e.focus_set()
+
+def countdown():
+    global time_left
+
+    if time_left > 0 :
+        time_left -= 1
+        time_label.config(text= "Time Left: "+ str(time_left)) 
+
+        time_label.after(1000,countdown)
+        
+def nextcolor():
+    global score,time_left
+
+    if time_left > 0:
+        e.focus_set()  
+
+        if e.get ().lower() == colors[1]:
+            score += 1
+        e.delete(0,tk.END)
+        random.shuffle(colors)
+        label.config(fg=str(colors[1]),text= str(colors[0]))
+        scorelabel.config(text= "Score : " + str(score))
+
+def start_game(event):
+    
+    global time_left 
+    if time_left == 30:
+        countdown()
+    nextcolor()
+
+root.bind("<Return>",start_game)
+
+
+
+
+root.mainloop()
