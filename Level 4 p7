@@ -1,0 +1,45 @@
+import tkinter as tk
+
+import time
+
+root = tk.Tk()
+root.geometry("1000x1000")
+b1 = tk.Button(root,text="click me")
+
+def button_click_handler(event):
+
+    print("Button Clicked")
+    b1.destroy()
+    
+b1.bind("<Button-1>",button_click_handler)
+
+b1.pack()
+
+canvas = tk.Canvas(root,width= 800, height= 800)
+
+def motion_handler(event):
+
+    print(f"mouse moved to location x = {event.x} y = {event.y} ")
+    x,y = event.x , event.y
+    canvas.delete("text")
+    canvas.create_text(x,y,text=f"mouse cordinates are ({x},{y})",tags="text")
+
+
+
+canvas.bind("<Motion>", motion_handler)
+canvas.pack()
+
+
+
+def key_press_handler (event):
+
+    print ("key pressed ", event.keysym)
+
+
+root.bind("<KeyPress >", key_press_handler)
+
+
+
+
+
+root.mainloop()
