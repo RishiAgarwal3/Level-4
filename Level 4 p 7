@@ -1,0 +1,5 @@
+x = lambda i,j,k: i**j**k 
+
+
+
+print (x(2,3,2))
