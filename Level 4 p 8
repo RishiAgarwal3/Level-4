@@ -1,3 +1,4 @@
+#lambda function
 x = lambda i,j,k: i**j**k 
 
 
