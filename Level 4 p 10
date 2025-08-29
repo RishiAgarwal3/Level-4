@@ -6,7 +6,7 @@ s = tt.Screen()
 s.setup(width = 800,height = 500)
 q = tt.Turtle()
 
-q.penup()wawwaawa
+q.penup()wa
 q.goto(-300,200)
 q.ht()
 q.write("What is the best programming language in terms of competitive programming", font=f)
