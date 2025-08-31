@@ -1,4 +1,4 @@
-#download hammer.gif and virus.gif filessdsadasdsa
+#download hammer.gif and virus.gif files
 import turtle
 import time
 import os
