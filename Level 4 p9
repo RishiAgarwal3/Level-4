@@ -1,4 +1,4 @@
-#Tic Tac 
+#Tic Tac To
 from tkinter import *
 
 from tkinter import messagebox
