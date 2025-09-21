@@ -1,0 +1,46 @@
+import turtle as tt
+import time
+
+f = ("verdana",20,"bold")
+s = tt.Screen()
+s.setup(width = 800,height = 500)
+q = tt.Turtle()
+
+q.penup()
+q.goto(-300,200)
+q.ht()
+q.write("What is the best programming language in terms of competitive programming", font=f)
+
+
+a = tt.Turtle()
+a.penup()
+a.goto(-300,120)
+a.shape("circle")
+a.shapesize(3)
+a.showturtle()
+a.color("blue")
+a.write("       C++", font = f)
+
+b = tt.Turtle()
+b.penup()
+b.goto(250,120)
+b.shape("circle")
+b.shapesize(3)
+b.showturtle()
+b.color("blue")
+b.write("       Python", font = f)
+
+c = tt.Turtle()
+d = tt.Turtle()
+p = tt.Turtle()
+
+p.penup()
+p.goto(300,220)
+p.ht()
+p.write("score : 0", font=f)
+
+tt.done()
+
+
+
+
